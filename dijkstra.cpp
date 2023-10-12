@@ -11,30 +11,42 @@
 
 using namespace std;
 
-
 void diplay_Graph(Graph g[MAX_NUMBER][MAX_NUMBER]) // function displays graph
 {
     int x = 10, y = 60; // Set x,y default values.
     char number[4];
+    char values[4];
 
     for(int i = 0; i < MAX_NUMBER; ++i){
         x = 200; y += 80;
         for(int j = 0; j < MAX_NUMBER; ++j){
-            std::ostringstream strs;
+            ostringstream strs;
+            ostringstream sides1;
+            ostringstream sides2;
+            ostringstream sides3;
             strs << g[i][j].index;
             string sd = strs.str();
             strcpy(number, sd.data());
+            sides1<< HORIZONTAL;
+            string stringing = sides1.str();
             setcolor(LIGHTGRAY);
             setfillstyle(SOLID_FILL,LIGHTGRAY);setbkcolor(LIGHTGRAY);
 
             if(j != MAX_NUMBER-1 && i != MAX_NUMBER-1){
                 setbkcolor(BLACK);
                 line(x+15, y, x+135, y);
-                outtextxy(x+80,y-5,"4");
-                line(x+15, y, x+135, y+80);;
-                outtextxy(x+70,y+30,"5");
+                strcpy(values, stringing.data());
+                outtextxy(x+80,y-5,values);
+                line(x+15, y, x+135, y+80);
+                sides2 << DIAGONAL;
+                stringing = sides2.str();
+                strcpy(values, stringing.data());
+                outtextxy(x+70,y+30,values);
                 line(x, y+65, x, y);
-                outtextxy(x-5,y+35,"3");
+                sides3 << VERTICLE;
+                stringing = sides3.str();
+                strcpy(values, stringing.data());
+                outtextxy(x-5,y+35,values);
             }
             if(i > 0 && j < MAX_NUMBER-1){
                 setbkcolor(BLACK);
@@ -43,12 +55,18 @@ void diplay_Graph(Graph g[MAX_NUMBER][MAX_NUMBER]) // function displays graph
             if(j == MAX_NUMBER-1 && i != MAX_NUMBER-1){
                 setbkcolor(BLACK);
                 line(x, y+65, x, y);
-                outtextxy(x,y+35,"3");
+                sides3 << VERTICLE;
+                stringing = sides3.str();
+                strcpy(values, stringing.data());
+                outtextxy(x,y+35,values);
             }
             if(i == MAX_NUMBER-1 && j != MAX_NUMBER-1){
                 setbkcolor(BLACK);
                 line(x+15, y, x+135, y);
-                outtextxy(x+78,y-5,"4");
+                sides3 << VERTICLE;
+                stringing = sides3.str();
+                strcpy(values, stringing.data());
+                outtextxy(x+78,y-5,values);
             }
             if(g[i][j].visited == 0){
                 setfillstyle(SOLID_FILL,LIGHTGREEN);setbkcolor(LIGHTGREEN);
