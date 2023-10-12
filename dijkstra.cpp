@@ -63,7 +63,7 @@ void diplay_Graph(Graph g[MAX_NUMBER][MAX_NUMBER]) // function displays graph
     }
 }
 
-void get_total_vertices(Graph graph[MAX_NUMBER][MAX_NUMBER]){ // funtion couts the number of egdes for the grid size
+void get_total_vertices(Graph graph[MAX_NUMBER][MAX_NUMBER]){ // funtion couNts the number of egdes for the grid size
     int counting = 0;
     for(int i = 0; i < MAX_NUMBER; i++){
         for(int j = 0; j < MAX_NUMBER; j++){
@@ -93,7 +93,7 @@ void printing(Graph g[MAX_NUMBER][MAX_NUMBER]){ //function prints statistics to 
 }
 
 //function below creates the dynamic grid. Currently the application only accepts grids of equal size.
-//This makes the applicatuion is
+//This makes the application dynamic and can displayed any length in grid size.
 void get_neighbors(Graph graph[MAX_NUMBER][MAX_NUMBER]){ //function sets the edges to the vertices
 
     for(int i = 0; i < MAX_NUMBER; i++){
@@ -291,7 +291,7 @@ int main()
     assign_index(graph); // assign index number of each vertice
     get_neighbors(graph); // assign neighbors and the edges
     int neighbors[MAX_NUMBER*MAX_NUMBER][MAX_NUMBER*MAX_NUMBER] = {}; //construct default neighbors array for Dijkstra algorithm
-    insert_into_array(graph,neighbors); // insert the edges of for each vertice into the neighbors array using the gragh array
+    insert_into_array(graph,neighbors); // insert the edges for each vertice into the neighbors array using the gragh array
     Dijkstra(neighbors,STARTING_VERTICE); // calculate distance using Dijkstra algorithm
 
     int gd=DETECT,gm; //begin graphics.h
